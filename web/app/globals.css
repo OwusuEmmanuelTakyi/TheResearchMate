@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-espresso: #1a130e;
+  --color-espresso-light: #2e1d12;
+  --color-cream: #f7eedd;
+  --color-amber: #c97a2e;
+  --color-gold: #c9a227;
+  --color-oxblood: #7a2a20;
+
+  /* Supporting tones derived from the palette */
+  --color-amber-hover: #d98b3d; /* button hover on any background */
+  --color-amber-deep: #9a5518; /* amber text/links on cream (meets 4.5:1) */
+  --color-parchment: #efe2c9; /* slightly deeper cream for alternating light sections */
+  --color-paper: #fffaf1; /* form field surface on cream */
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-espresso);
+}
+
+::selection {
+  background-color: var(--color-amber);
+  color: var(--color-espresso);
+}
+
+/* Entrance animations (components/motion/Reveal.tsx) start hidden via inline
+   styles. Users who prefer reduced motion see the content immediately. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
